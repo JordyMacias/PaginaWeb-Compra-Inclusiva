@@ -70,7 +70,7 @@ Plataforma de comercio electrónico inclusiva y accesible, construida con React,
 ### 1. Clonar y entrar al proyecto
 
 ```bash
-git clone <url-del-repositorio>
+git clone https://github.com/JordyMacias/PaginaWeb-Compra-Inclusiva
 cd CompraInclusiva
 ```
 
