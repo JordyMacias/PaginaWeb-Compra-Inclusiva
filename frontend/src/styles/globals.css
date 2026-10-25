@@ -1,0 +1,451 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =====================================================
+   VARIABLES CSS GLOBALES — MODO CLARO
+   ===================================================== */
+:root {
+  --font-size-base:    1rem;
+  --font-size-scale:   1;
+  --line-height-base:  1.6;
+  --letter-spacing-base: 0em;
+  --word-spacing-base:   0em;
+
+  --color-bg:           #ffffff;
+  --color-bg-subtle:    #f8fafc;
+  --color-surface:      #f1f5f9;
+  --color-border:       #e2e8f0;
+  --color-text:         #1e293b;
+  --color-text-muted:   #475569;
+  --color-primary:      #2563eb;
+  --color-primary-dark: #1d4ed8;
+  --color-focus:        #2563eb;
+
+  --focus-ring-width:  3px;
+  --focus-ring-color:  rgba(37, 99, 235, 0.7);
+  --focus-ring-offset: 2px;
+}
+
+/* =====================================================
+   MODO OSCURO — overrides explícitos de clases Tailwind
+   ===================================================== */
+.dark {
+  color-scheme: dark;
+  --color-bg:           #0f172a;
+  --color-bg-subtle:    #1e293b;
+  --color-surface:      #1e293b;
+  --color-border:       #334155;
+  --color-text:         #f1f5f9;
+  --color-text-muted:   #94a3b8;
+  --color-primary:      #60a5fa;
+  --color-primary-dark: #93c5fd;
+  --color-focus:        #60a5fa;
+  --focus-ring-color:   rgba(96, 165, 250, 0.7);
+}
+
+/* body y html */
+.dark body, .dark html { background-color: #0f172a; color: #f1f5f9; }
+.dark { background-color: #0f172a; color: #f1f5f9; }
+
+/* Fondos blancos/claros → oscuros */
+.dark .bg-white          { background-color: #1e293b !important; }
+.dark .bg-gray-50        { background-color: #1e293b !important; }
+.dark .bg-slate-50       { background-color: #1e293b !important; }
+.dark .bg-surface-50     { background-color: #1e293b !important; }
+.dark .bg-surface-100    { background-color: #334155 !important; }
+.dark .bg-surface-200    { background-color: #334155 !important; }
+.dark .bg-primary-50     { background-color: #1e3a5f !important; }
+.dark .bg-primary-100    { background-color: #1e3a5f !important; }
+.dark .bg-surface-900    { background-color: #020617 !important; }
+.dark .bg-gray-900       { background-color: #020617 !important; }
+
+/* Header */
+.dark header {
+  background-color: #0f172a !important;
+  border-bottom-color: #334155 !important;
+}
+
+/* Footer */
+.dark footer {
+  background-color: #020617 !important;
+  border-top-color: #334155 !important;
+}
+
+/* Textos grises → claros */
+.dark .text-gray-900, .dark .text-slate-900,
+.dark .text-surface-900  { color: #f1f5f9 !important; }
+.dark .text-gray-800, .dark .text-slate-800,
+.dark .text-surface-800  { color: #e2e8f0 !important; }
+.dark .text-gray-700, .dark .text-slate-700,
+.dark .text-surface-700  { color: #cbd5e1 !important; }
+.dark .text-gray-600, .dark .text-slate-600,
+.dark .text-surface-600  { color: #94a3b8 !important; }
+.dark .text-gray-500, .dark .text-slate-500,
+.dark .text-surface-500  { color: #64748b !important; }
+.dark .text-gray-400, .dark .text-surface-400 { color: #475569 !important; }
+
+/* Color primario → azul claro */
+.dark .text-primary-600,
+.dark .text-primary-700  { color: #60a5fa !important; }
+
+/* Bordes */
+.dark .border-surface-200,
+.dark .border-gray-200,
+.dark .border-slate-200  { border-color: #334155 !important; }
+.dark .border-surface-300,
+.dark .border-gray-300    { border-color: #475569 !important; }
+
+/* Botones primarios */
+.dark .bg-primary-600    { background-color: #1d4ed8 !important; }
+.dark .bg-primary-700    { background-color: #1e40af !important; }
+
+/* Botón secundario */
+.dark .btn-secondary,
+.dark button.bg-white    {
+  background-color: #1e293b !important;
+  color: #93c5fd !important;
+  border-color: #60a5fa !important;
+}
+
+/* Inputs */
+.dark input:not([type="checkbox"]):not([type="radio"]),
+.dark select,
+.dark textarea {
+  background-color: #1e293b !important;
+  color: #f1f5f9 !important;
+  border-color: #475569 !important;
+}
+.dark input::placeholder,
+.dark textarea::placeholder { color: #64748b !important; }
+
+/* Links */
+.dark a { color: #60a5fa !important; }
+.dark a:hover { color: #93c5fd !important; }
+
+/* Cards */
+.dark .card { background-color: #1e293b !important; border-color: #334155 !important; }
+
+/* Sombras */
+.dark .shadow-sm { box-shadow: 0 1px 2px rgba(0,0,0,0.5) !important; }
+.dark .shadow-lg { box-shadow: 0 10px 15px rgba(0,0,0,0.5) !important; }
+
+/* =====================================================
+   ALTO CONTRASTE — enfoque limpio sin !important masivo
+   Amarillo solo en texto/links, NO en botones flotantes ni logos.
+   ===================================================== */
+.high-contrast {
+  color-scheme: dark;
+  --color-bg:           #000000;
+  --color-bg-subtle:    #111111;
+  --color-surface:      #111111;
+  --color-border:       #ffffff;
+  --color-text:         #ffffff;
+  --color-text-muted:   #eeeeee;
+  --color-primary:      #4fc3f7;   /* azul claro — buen contraste sin cegar */
+  --color-primary-dark: #81d4fa;
+  --color-focus:        #ffffff;
+  --focus-ring-color:   #ffffff;
+  --focus-ring-width:   4px;
+}
+
+/* Solo body y html obtienen el fondo negro — nada más */
+.high-contrast body,
+.high-contrast html {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+/* Texto base: blanco. No aplica !important para no romper Tailwind */
+.high-contrast {
+  color: #ffffff;
+  background-color: #000000;
+}
+
+/* Elementos de texto heredan el color blanco del body */
+.high-contrast h1, .high-contrast h2,
+.high-contrast h3, .high-contrast h4,
+.high-contrast h5, .high-contrast h6 {
+  color: #ffffff;
+}
+
+/* Fondo blanco de Tailwind → fondo oscuro en alto contraste */
+.high-contrast .bg-white          { background-color: #111111 !important; color: #ffffff !important; }
+.high-contrast .bg-gray-50        { background-color: #111111 !important; }
+.high-contrast .bg-slate-50       { background-color: #111111 !important; }
+.high-contrast .bg-surface-50     { background-color: #111111 !important; }
+.high-contrast .bg-primary-50     { background-color: #222200 !important; }
+.high-contrast .bg-primary-100    { background-color: #333300 !important; }
+.high-contrast .bg-surface-100    { background-color: #1a1a1a !important; }
+.high-contrast .bg-surface-900    { background-color: #000000 !important; }
+
+/* Textos grises → blancos */
+.high-contrast .text-gray-900, .high-contrast .text-slate-900,
+.high-contrast .text-surface-900  { color: #ffffff !important; }
+.high-contrast .text-gray-800, .high-contrast .text-slate-800,
+.high-contrast .text-surface-800  { color: #ffffff !important; }
+.high-contrast .text-gray-700, .high-contrast .text-slate-700,
+.high-contrast .text-surface-700  { color: #eeeeee !important; }
+.high-contrast .text-gray-600, .high-contrast .text-slate-600,
+.high-contrast .text-surface-600  { color: #dddddd !important; }
+.high-contrast .text-gray-500, .high-contrast .text-slate-500,
+.high-contrast .text-surface-500  { color: #cccccc !important; }
+.high-contrast .text-gray-400, .high-contrast .text-surface-400 { color: #bbbbbb !important; }
+
+/* Color primario → azul claro (sin amarillo cegador) */
+.high-contrast .text-primary-600,
+.high-contrast .text-primary-700  { color: #4fc3f7 !important; }
+
+/* Bordes */
+.high-contrast .border-surface-200,
+.high-contrast .border-gray-200,
+.high-contrast .border-slate-200  { border-color: #555555 !important; }
+.high-contrast .border-surface-300,
+.high-contrast .border-gray-300    { border-color: #888888 !important; }
+
+/* Header y footer */
+.high-contrast header { background-color: #000000 !important; border-bottom-color: #ffffff !important; }
+.high-contrast footer { background-color: #111111 !important; border-top-color: #ffffff !important; }
+
+/* Botones primarios → azul claro sobre negro */
+.high-contrast .bg-primary-600,
+.high-contrast .bg-primary-700    { background-color: #0369a1 !important; color: #ffffff !important; }
+.high-contrast .hover\:bg-primary-700:hover { background-color: #0284c7 !important; }
+
+/* Inputs */
+.high-contrast input, .high-contrast select, .high-contrast textarea {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  border-color: #ffffff !important;
+}
+.high-contrast input::placeholder,
+.high-contrast textarea::placeholder { color: #aaaaaa !important; }
+
+/* Links — azul claro legible, no amarillo */
+.high-contrast a { color: #4fc3f7 !important; }
+.high-contrast a:hover { color: #81d4fa !important; }
+
+/* Foco — blanco nítido, sin amarillo */
+.high-contrast :focus-visible {
+  outline: 4px solid #ffffff !important;
+  outline-offset: 3px !important;
+}
+
+/* Imágenes: ligero aumento de contraste */
+.high-contrast img { filter: contrast(1.1) brightness(0.95); }
+
+/* Sistema también activado */
+@media (prefers-contrast: more) {
+  :root {
+    --color-bg:           #000000;
+    --color-bg-subtle:    #111111;
+    --color-surface:      #111111;
+    --color-border:       #ffffff;
+    --color-text:         #ffffff;
+    --color-text-muted:   #eeeeee;
+    --color-primary:      #4fc3f7;
+    --color-primary-dark: #81d4fa;
+    --color-focus:        #ffffff;
+    --focus-ring-color:   #ffffff;
+  }
+}
+
+/* =====================================================
+   MOVIMIENTO REDUCIDO
+   ===================================================== */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration:        0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration:       0.01ms !important;
+    scroll-behavior:           auto !important;
+  }
+}
+
+.reduce-motion * {
+  animation-duration:        0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration:       0.01ms !important;
+  scroll-behavior:           auto !important;
+}
+
+/* =====================================================
+   ESTILOS BASE GLOBALES
+   ===================================================== */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html {
+  font-size: calc(var(--font-size-base) * var(--font-size-scale));
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont,
+               'Segoe UI', Roboto, sans-serif;
+  font-size:        var(--font-size-base);
+  line-height:      var(--line-height-base);
+  color:            var(--color-text);
+  background-color: var(--color-bg);
+  letter-spacing:   var(--letter-spacing-base);
+  word-spacing:     var(--word-spacing-base);
+  -webkit-font-smoothing:  antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* =====================================================
+   FOCO
+   ===================================================== */
+:focus-visible {
+  outline:        var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+  border-radius:  4px;
+}
+:focus:not(:focus-visible) { outline: none; }
+
+.focus-highlight :focus-visible {
+  outline:    5px solid #ff6600 !important;
+  outline-offset: 4px !important;
+  box-shadow: 0 0 0 8px rgba(255,102,0,0.3) !important;
+}
+
+/* =====================================================
+   CURSOR GRANDE
+   ===================================================== */
+.large-cursor,
+.large-cursor * {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M8 2L8 26L14 20L18 28L21 27L17 19L25 19Z' fill='black' stroke='white' stroke-width='2'/%3E%3C/svg%3E") 0 0, auto !important;
+}
+
+/* =====================================================
+   SOLO LECTORES DE PANTALLA
+   ===================================================== */
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); white-space: nowrap; border-width: 0;
+}
+
+/* =====================================================
+   SKIP LINKS
+   ===================================================== */
+.skip-link {
+  position: absolute; top: -100%; left: 1rem; z-index: 9999;
+  padding: 0.75rem 1.5rem;
+  background: var(--color-primary);
+  color: #ffffff;
+  font-weight: 600; font-size: 1rem;
+  border-radius: 0 0 0.5rem 0.5rem;
+  text-decoration: none; transition: top 0.2s ease;
+}
+.skip-link:focus { top: 0; outline: 3px solid #ffffff; outline-offset: 2px; }
+
+/* =====================================================
+   TIPOGRAFÍA
+   ===================================================== */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.2; font-weight: 700;
+  margin-top: 0; color: var(--color-text);
+}
+p { margin-top: 0; max-width: 70ch; }
+a { color: var(--color-primary); text-decoration: underline; text-underline-offset: 3px; }
+a:hover { color: var(--color-primary-dark); }
+img { max-width: 100%; height: auto; display: block; }
+input, select, textarea, button { font-family: inherit; font-size: inherit; }
+
+/* Regiones live */
+#live-region-polite,
+#live-region-assertive {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+
+/* =====================================================
+   COMPONENTES BASE
+   ===================================================== */
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 font-semibold rounded-lg
+           transition-colors duration-200 cursor-pointer select-none
+           min-h-[44px] px-5 py-2.5 text-base;
+  }
+  .btn:disabled { @apply opacity-50 cursor-not-allowed pointer-events-none; }
+  .btn-primary  {
+    @apply btn bg-primary-600 text-white hover:bg-primary-700
+           focus-visible:ring-2 focus-visible:ring-primary-600 focus-visible:ring-offset-2;
+  }
+  .btn-secondary {
+    @apply btn bg-white text-primary-700 border-2 border-primary-600
+           hover:bg-primary-50
+           focus-visible:ring-2 focus-visible:ring-primary-600 focus-visible:ring-offset-2;
+  }
+  .btn-danger {
+    @apply btn bg-error-600 text-white hover:bg-error-700
+           focus-visible:ring-2 focus-visible:ring-error-600 focus-visible:ring-offset-2;
+  }
+  .btn-ghost {
+    @apply btn bg-transparent text-surface-700 hover:bg-surface-100
+           focus-visible:ring-2 focus-visible:ring-primary-600 focus-visible:ring-offset-2;
+  }
+  .input {
+    @apply w-full rounded-lg border-2 border-surface-300 bg-white px-4 py-3
+           text-base text-surface-800 placeholder:text-surface-400
+           transition-colors duration-200
+           focus:border-primary-600 focus:outline-none focus:ring-2
+           focus:ring-primary-600 focus:ring-offset-0;
+  }
+  .input-error { @apply border-error-600 focus:border-error-600 focus:ring-error-600; }
+  .card  { @apply bg-white rounded-xl border border-surface-200 shadow-sm overflow-hidden; }
+  .badge { @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold; }
+}
+
+/* =====================================================
+   CLASES DE ACCESIBILIDAD
+   ===================================================== */
+.text-large { --font-size-scale: 1.2; }
+.text-xl    { --font-size-scale: 1.4; }
+.text-xxl   { --font-size-scale: 1.6; }
+
+.line-height-wide *  { line-height: 1.9 !important; }
+.line-height-wider * { line-height: 2.2 !important; }
+
+.spacing-wide * {
+  line-height: 1.8 !important;
+  letter-spacing: 0.12em !important;
+  word-spacing:   0.16em !important;
+  margin-bottom:  0.5em  !important;
+}
+
+.dyslexia-font,
+.dyslexia-font * {
+  font-family: 'Arial', 'Verdana', 'Trebuchet MS', sans-serif !important;
+  letter-spacing: 0.05em !important;
+  word-spacing:   0.1em  !important;
+}
+
+.simplified-view .decorative { display: none; }
+
+/* =====================================================
+   BOTÓN FLOTANTE DE ACCESIBILIDAD
+   Color fijo — nunca amarillo, nunca invisible
+   ===================================================== */
+.a11y-widget-btn {
+  background-color: #1d4ed8 !important;   /* azul siempre */
+  color: #ffffff !important;
+}
+.a11y-widget-btn:hover {
+  background-color: #1e40af !important;
+}
+.high-contrast .a11y-widget-btn {
+  background-color: #0369a1 !important;   /* azul más oscuro en alto contraste */
+  color: #ffffff !important;
+  border: 2px solid #ffffff !important;
+}
+.dark .a11y-widget-btn {
+  background-color: #1d4ed8 !important;
+  color: #ffffff !important;
+}
