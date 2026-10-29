@@ -26,6 +26,8 @@ const NotFoundPage = lazy(() =>
   import('./pages/NotFoundPage').then(m => ({ default: m.NotFoundPage })));
 const ProfilePage = lazy(() =>
   import('./pages/ProfilePage').then(m => ({ default: m.ProfilePage })));
+const CheckoutPage = lazy(() =>
+  import('./pages/CheckoutPage').then(m => ({ default: m.CheckoutPage })));
 
 // ── Panel de administración ───────────────────────────
 const AdminLayout = lazy(() =>
@@ -60,6 +62,14 @@ export function App() {
                     element={
                       <ProtectedRoute>
                         <ProfilePage />
+                      </ProtectedRoute>
+                    }
+                  />
+                  <Route
+                    path="/checkout"
+                    element={
+                      <ProtectedRoute>
+                        <CheckoutPage />
                       </ProtectedRoute>
                     }
                   />
